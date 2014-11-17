@@ -1,0 +1,27 @@
+module semantics
+
+signature
+  sorts ID State Transition Machine Event
+  constructors
+    Machine : ID * List(State) * List(Transition) -> Machine
+    
+    Event : ID -> Event
+    
+  arrows
+  
+    Event -default-> Unit
+  
+
+// rules
+// 
+//   Machine(m, ext, elem*) -init-> 
+  
+  
+  
+
+      
+       
+       
+    
+    
+                  

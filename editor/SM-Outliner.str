@@ -1,0 +1,29 @@
+module editor/SM-Outliner
+
+imports
+  
+  include/SM
+  lib/runtime/editor/outline-library
+  lib/runtime/editor/origins
+
+rules
+	
+	to-outline-label : 
+		Machine(m, ext, elem*) -> m
+  
+  to-outline-label :
+  	VarDef(x, c) -> x
+  	  	
+  to-outline-label :
+  	State(s) -> s
+  	
+  to-outline-label :
+  	Transition(StateRef(from), StateRef(to), Event(e), _, _) -> 
+  	$[[from] -> [to] ([e])]{"icons/rule.png"}
+  
+  to-outline-label :
+  	Transition(StateRef(from), StateRef(to), NoEvent(), _, _) -> 
+  	$[[from] -> [to]] 	
+
+ 
+  

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.imp.runtime.languageDescription">
+      <language
+            extensions="sm"
+            description="SM"
+            language="SM"
+            derivedFrom="DynamicRoot"
+            validator="statemachine.SMValidator"
+            validatorClass="statemachine.SMValidator"
+      ></language>
+   </extension>
+   <extension
+         id="statemachine.parser"
+         name="SM Parser"
+         point="org.eclipse.imp.runtime.parser">
+      <parser
+            class="statemachine.SMParseController"
+            language="SM">
+      </parser>
+   </extension>    
+</plugin>

@@ -1,0 +1,32 @@
+module SM.main
+
+imports
+  SM-Colorer
+  SM-Completions
+  SM-Folding
+  SM-Menus
+  SM-Refactorings
+  SM-References
+  SM-Syntax
+  SM-Views
+  src-gen/completions/SM-esv
+
+language General properties
+  
+  name:          SM
+  id:            statemachine
+  extends:       Root
+  
+  description:   "Spoofax-generated editor for the SM language"
+  url:           http://strategoxt.org
+  
+  extensions:    sm
+  table:         include/SM.tbl
+  start symbols: Start
+  
+  provider:      include/sm.ctree
+  provider:      include/sm-java.jar
+  
+  observer:      editor-analyze (multifile)
+  
+  on save:       editor-save

@@ -1,0 +1,18 @@
+language SM
+
+start symbol Element
+
+test state [[
+	state A
+]] parse to State("A")
+
+
+test var def [[
+	x := 3
+]] parse to VarDef("x", Int("3"))
+
+
+test transition [[
+	x := 3
+]] parse to VarDef("x", Int("3"))
+

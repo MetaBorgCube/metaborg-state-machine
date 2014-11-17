@@ -1,0 +1,28 @@
+module names
+
+imports include/SM
+	
+namespaces Machine State Variable
+	
+binding rules
+
+  Machine(m, elems, extends) :
+  	defines Machine m
+  	scopes State, Variable
+  	
+  Extends(m) :
+  	imports State, Variable from Machine m
+  	
+  State(s) :
+  	defines State s
+  	
+  StateRef(s) :
+  	refers to State s
+  	
+  VarDef(x, c) :
+  	defines Variable x of type t
+  	where c has type t
+  	
+  Var(x) :
+  	refers to Variable x
+  	

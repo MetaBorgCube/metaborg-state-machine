@@ -1,0 +1,12 @@
+state machine ExtVendingMachine extends VendingMachine
+
+  beers := 15
+  
+  state Vend_Beer
+  
+  transition from Waiting to Vend_Beer: Vend_Beer 
+    [ beers > 0 ] / drinks := drinks - 1
+  transition from Vend_Beer to Waiting: Vended 
+    [beers > 0 or sweets > 0 or drinks > 0]
+
+ 

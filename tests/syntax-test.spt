@@ -1,0 +1,78 @@
+language SM
+
+start symbol Start
+
+test vending machine [[
+	state machine VendingMachine
+
+  drinks := 10
+  sweets := 20
+  
+  state Waiting  
+  state Vend_Drink
+  state Vend_Sweet 
+  state Empty
+  
+  transition from Waiting to Vend_Drink: Vend_Drink 
+    [ drinks > 0 ] / drinks := drinks - 1
+  transition from Vend_Drink to Waiting: Vended 
+    [ drinks > 0 or sweets > 0 ]
+  
+  transition from Waiting to Vend_Sweet: Vend_Sweet
+    [ sweets > 0 ] / sweets := sweets - 1
+  transition from Vend_Sweet to Waiting: Vended 
+    [ sweets > 0 or drinks > 0 ]
+  
+  transition from Vend_Sweet to Empty: Vended 
+    [ drinks == 0 and sweets == 0 ]
+  transition from Vend_Drink to Empty: Vended 
+    [ drinks == 0 and sweets == 0 ]
+]] parse succeeds
+
+test var def [[
+	state machine VendingMachine
+  drinks := 10
+]] parse succeeds
+
+test state [[
+	state machine VendingMachine
+  state Waiting  
+  state Vend_Drink
+  state Vend_Sweet 
+  state Empty
+]] parse succeeds
+
+test transition basic [[
+	state machine VendingMachine
+	
+  transition from Waiting to Vend_Drink: Vend_Drink 
+  
+  transition from Vend_Drink to Waiting
+  
+]] parse succeeds
+
+test transition guards [[
+	state machine VendingMachine
+	
+  transition from Vend_Drink to Waiting: Vended 
+    [ drinks > 0 or sweets > 0 ]
+    
+  transition from Vend_Sweet to Waiting: Vended 
+    [ sweets > 0 or drinks > 0 ]
+  
+  transition from Vend_Sweet to Empty: Vended 
+    [ drinks == 0 and sweets == 0 ]
+    
+  transition from Vend_Drink to Empty: Vended 
+    [ drinks == 0 and sweets == 0 ]
+]] parse succeeds
+
+test transition actions [[
+	state machine VendingMachine
+	
+  transition from Waiting to Vend_Drink: Vend_Drink 
+    [ drinks > 0 ] / drinks := drinks - 1
+  
+  transition from Waiting to Vend_Sweet: Vend_Sweet
+    [ sweets > 0 ] / sweets := sweets - 1
+]] parse succeeds

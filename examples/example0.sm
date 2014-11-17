@@ -1,0 +1,7 @@
+state machine OpenClose
+
+state Opened
+state Closed
+  
+transition from Opened to Closed: close
+transition from Closed to Opened: open

@@ -1,0 +1,37 @@
+language SM
+
+start symbol Exp
+
+test variable [[
+	x
+]] parse to Var("x")
+
+test long variable [[
+	x_y_3
+]] parse to Var("x_y_3")
+
+test add [[
+	x + 3
+]] parse to Add(Var("x"), Int("3"))
+
+test sub [[
+	x - 3
+]] parse to Sub(Var("x"), Int("3"))
+
+test sub [[
+	y + x - 3
+]] parse to [[ (y + x) - 3]]
+
+test sub [[
+	y + (x - 3)
+]] parse to Add(Var("y"), Sub(Var("x"), Int("3")))
+
+test gt [[
+	y > 56
+]] parse to Gt(Var("y"), Int("56"))
+
+test eq [[
+	y == 56
+]] parse to Eq(Var("y"), Int("56"))
+
+
