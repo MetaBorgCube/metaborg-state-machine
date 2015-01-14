@@ -27,3 +27,11 @@ lib/runtime
 lib/*.generated.str
 lib-refactoring/*.generated.str
 /src-gen
+/include/
+examples/example-ext1.aterm
+examples/example-ext1.java
+examples/example-ext1.pp.sm
+examples/example0.aterm
+examples/example0.java
+examples/VendingMachine.aterm
+examples/VendingMachine.java
