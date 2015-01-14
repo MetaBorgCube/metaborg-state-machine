@@ -1,6 +1,6 @@
 module generate
 
-imports include/SM
+imports signatures/SM-sig
 
 rules 
 
@@ -72,7 +72,7 @@ rules
   	Actions(action*) -> <map(action-to-java)> action*
   	
   action-to-java :
-  	Assign(x, e) -> $[[x] = [<exp-to-java>e];]
+  	Assign(Var(x), e) -> $[[x] = [<exp-to-java>e];]
   	
 rules // translate expressions
 	  	
