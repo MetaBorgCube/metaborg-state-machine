@@ -19,8 +19,6 @@ lexical syntax
 	NewLineEOF     = EOF 
 	EOF            =  
 	
-	
-
 lexical restrictions
 
 	// Ensure greedy matching for lexicals
