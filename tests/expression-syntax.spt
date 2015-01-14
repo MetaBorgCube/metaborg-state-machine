@@ -22,6 +22,11 @@ test sub [[
 	y + x - 3
 ]] parse to [[ (y + x) - 3]]
 
+test add add [[
+	x + y + z
+]] parse to [[ (x + y) + z]]
+
+
 test sub [[
 	y + (x - 3)
 ]] parse to Add(Var("y"), Sub(Var("x"), Int("3")))
