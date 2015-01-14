@@ -1,0 +1,70 @@
+module SM
+
+imports Common
+
+context-free start-symbols Start Element Exp
+
+// context-free syntax
+//   
+//   Start = System
+//   
+//   System.Machine = [
+//   	state machine [ID] [Extends]
+//   	  [{Element "\n"}*]
+//   ]
+//   
+//   Extends.Extends = 
+//   	[extends [ID]]
+//   	
+//   Extends.NoExtends = []
+//   
+//   Element.State = 
+//   	[state [ID]]
+// 
+//   Element.Transition = [
+//   	transition from [StateRef] to [StateRef] [Event]
+//   	  [Guard] [Actions]
+//   ]
+//   	
+//   StateRef.StateRef = ID
+// 
+//   Event.Event   =  [: [ID]]
+//   Event.NoEvent = []
+//     	
+//   Element.VarDef =
+//   	[[ID] := [Const]]
+//   	 	
+//   Guard.Guard   = <[<Exp>]>
+//   Guard.NoGuard = []
+//   	
+//   Actions.Actions   = [/ [{Action ";"}*]] 	
+//   Actions.NoActions = []
+//   	
+//   Action.Assign = [[Var] := [Exp]]  
+//   Action.Exp = Exp
+//   	
+//   Exp.And = [[Exp] and [Exp]] {left}
+//   Exp.Or  = [[Exp] or [Exp]] {left}
+//   Exp.Eq  = [[Exp] == [Exp]] {non-assoc}
+//   Exp.Gt  = [[Exp] > [Exp]] {non-assoc}
+//   Exp.Add = [[Exp] + [Exp]] {assoc}
+//   Exp.Sub = [[Exp] - [Exp]] {left}
+//   Exp     = Var
+//   Exp     = Const
+//   Exp     = [([Exp])] {bracket}
+//     
+//   Var.Var = ID
+//   
+//   Const.Int   = INT
+//   Const.True  = [true]
+//   Const.False = [false]
+//   
+//   Type.BoolType = [bool]
+//   Type.IntType  = [int]
+// 
+// context-free priorities
+// 
+//   {left: Exp.Add Exp.Sub } 
+//   > {non-assoc: Exp.Eq Exp.Gt }
+//   > Exp.And
+//   > Exp.Or 
