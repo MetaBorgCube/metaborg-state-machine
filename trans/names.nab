@@ -1,7 +1,7 @@
 module names
 
 imports include/SM
-	
+
 namespaces Machine State Variable
 	
 binding rules
