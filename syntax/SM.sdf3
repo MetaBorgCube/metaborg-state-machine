@@ -1,7 +1,5 @@
 module SM
-
 imports Common
-
 context-free start-symbols Start Element Exp
 
 context-free syntax
@@ -15,7 +13,7 @@ context-free syntax
   
   Extends.Extends = 
   	[extends [ID]]
-  	
+  	 
   Extends.NoExtends = []
   
   Element.State = 
@@ -28,16 +26,15 @@ context-free syntax
   	
   StateRef.StateRef = ID
 
-  Event.Event   =  [: [ID]]
+  Event.Event   = [: [ID]]
   Event.NoEvent = []
     	
-  Element.VarDef =
-  	[[ID] := [Const]]
+  Element.VarDef = [[ID] := [Const]]
   	 	
   Guard.Guard   = <[<Exp>]>
   Guard.NoGuard = []
   	
-  Actions.Actions   = [/ [{Action ";"}*]] 	
+  Actions.Actions   = [{ [{Action ";\n"}*] }]
   Actions.NoActions = []
   	
   Action.Assign = [[Var] := [Exp]]  
@@ -45,7 +42,7 @@ context-free syntax
   	
   Exp.And = [[Exp] and [Exp]] {left}
   Exp.Or  = [[Exp] or [Exp]] {left}
-  Exp.Eq  = [[Exp] == [Exp]] {non-assoc}
+  Exp.Eq  = [[Exp] = [Exp]] {non-assoc}
   Exp.Gt  = [[Exp] > [Exp]] {non-assoc}
   Exp.Add = [[Exp] + [Exp]] {assoc}
   Exp.Sub = [[Exp] - [Exp]] {left}
@@ -61,7 +58,10 @@ context-free syntax
   
   Type.BoolType = [bool]
   Type.IntType  = [int]
-
+  
+  ID = [true] {reject}
+  ID = [false] {reject}
+ 
 context-free priorities
 
   {left: Exp.Add Exp.Sub } 

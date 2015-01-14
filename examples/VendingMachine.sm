@@ -9,17 +9,18 @@ state machine VendingMachine
   state Empty
   
   transition from Waiting to Vend_Drink: Vend_Drink 
-    [ drinks > 0 ] / drinks := drinks - 1
-  transition from Vend_Drink to Waiting: Vended 
+    [ drinks > 0 ] { drinks := drinks - 1 }
+  transition from Vend_Drink to Waiting: Vended  
     [ drinks > 0 or sweets > 0 ]
   
   transition from Waiting to Vend_Sweet: Vend_Sweet
-    [ sweets > 0 ] / sweets := sweets - 1
+    [ sweets > 0 ] { sweets := sweets - 1 }
   transition from Vend_Sweet to Waiting: Vended 
     [ sweets > 0 or drinks > 0 ]
   
   transition from Vend_Sweet to Empty: Vended 
-    [ drinks == 0 and sweets == 0 ]
+    [ drinks = 0 and sweets = 0 ]
   transition from Vend_Drink to Empty: Vended 
-    [ drinks == 0 and sweets == 0 ]
+    [ drinks = 0 and sweets = 0 ]
+  
   
