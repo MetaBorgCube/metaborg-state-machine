@@ -20,6 +20,7 @@ imports
 	generate
 	pp
 	types.generated
+	signatures/SM-sig
 
 rules // Analysis
 	
